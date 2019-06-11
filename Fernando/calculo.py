@@ -8,17 +8,20 @@ def calculo(x,y, cols, rows, band, grid):
 	data = band.ReadAsArray(x, y, cols, rows).astype(numpy.float)
 	unique_elements, counts_elements = numpy.unique(data, return_counts=True)
 	
-	media = 0
-	soma = 0
+	media = 0.0
+	soma = 0.0
 	for i in xrange(len(unique_elements)):
 		if(unique_elements[i] >= 0):
 			media = media + unique_elements[i]*counts_elements[i]
 			soma = soma + counts_elements[i]
 
 	if(soma > 0):
+		antes = media
 		media = media / soma
 		grid.append({"x":x,"y":y,"media":media})
+		#print(unique_elements,'media2 = ', media,soma,antes)
 		return media
+	#print(unique_elements,'media = ', media)
 	return ""
 	
 def calculoPastagem(x,y, cols, rows, band, grid):
@@ -26,9 +29,8 @@ def calculoPastagem(x,y, cols, rows, band, grid):
 	data = band.ReadAsArray(x, y, cols, rows).astype(numpy.float)
 	unique_elements, counts_elements = numpy.unique(data, return_counts=True)
 	
-	media = 0
-	soma = 0
-	
+	media = 0.0
+	soma = 0.0
 	for i in xrange(len(unique_elements)):
 		if(unique_elements[i] >= 0 and unique_elements[i] < 100):
 			if(unique_elements[i] == 0):
@@ -41,6 +43,7 @@ def calculoPastagem(x,y, cols, rows, band, grid):
 	if(soma > 0):
 		media = media / soma
 		grid.append({"x":x,"y":y,"media":media})
+		
 		return media
 	return ""
 
@@ -56,7 +59,7 @@ pousadasBand = pousadasRaster.GetRasterBand(1)
 pousadasBandNoDataValue = pousadasBand.GetNoDataValue()
 
 
-pastagem = 'RASTERS_RAPHAEL/PASTAGEM_PANTANAL1.tif'
+pastagem = 'RASTERS_RAPHAEL/PASTAGEM_INVERSO1.tif'
 pastagemRaster = gdal.Open(pastagem)
 pastagemBand = pastagemRaster.GetRasterBand(1)
 pastagemBandNoDataValue = pastagemBand.GetNoDataValue()
@@ -70,8 +73,8 @@ y_block_size = block_sizes[1]
 xsize = adequabilidadeBand.XSize
 ysize = adequabilidadeBand.YSize
 
-x_block_size = 15
-y_block_size = 15
+x_block_size = 79
+y_block_size = 79
 
 
 print(xsize,ysize,x_block_size,y_block_size)
