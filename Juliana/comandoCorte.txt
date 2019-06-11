@@ -1,0 +1,6 @@
+gdalwarp -q -cutline /home/raphael/Documentos/Juliana/Reserva/Reservas_legais_MTReprojetado.shp -crop_to_cutline -of GTiff /home/raphael/Documentos/Juliana/Imagens/CERRADO_2016.tif /home/raphael/Documentos/Juliana/Imagens/CERRADO_2016_MT_Reservas_Cortado.tif
+
+
+
+
+gdalwarp -config GDALWARP_IGNORE_BAD_CUTLINE YES -dstnodata 0 -q -cutline /home/raphael/JUliana/ReservaLegal/Reservas_legais_MT.shp -crop_to_cutline -tr 0.000269494585236 0.000269494585236 -of GTiff /home/raphael/JUliana/Imagens/CERRADO_2016_MT.tif /home/raphael/JUliana/Imagens/CERRADO_2016_MT_Reserva.tif

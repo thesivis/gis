@@ -1,0 +1,2 @@
+linhas: 85409  colunas: 77984 bandas: 1 driver: GTiff MT/EstadoMT_UTM_Reprojetado.shp Imagens/CERRADO_2016.tif
+<osgeo.gdal.Band; proxy of <Swig Object of type 'GDALRasterBandShadow *' at 0x7f425b06b2a0> >
